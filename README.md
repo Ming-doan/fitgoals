@@ -1,5 +1,12 @@
 # Fitgoals Solution
 
+### 🧑‍💻 Tech Stack
+
+1. Front-end/Mobile: Flutter
+2. Back-end: Golang (Fiber)
+3. Database: MongoDB
+4. Storage: MinIO
+
 ### ⚡ How to run this project
 
 #### Front-end (Flutter)
