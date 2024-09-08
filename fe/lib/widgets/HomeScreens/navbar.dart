@@ -1,99 +1,92 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax_plus/iconsax_plus.dart';
+import 'package:flutter_svg/svg.dart';
+
+class NavItem {
+  final String icon;
+  final String activeIcon;
+  final Widget page;
+
+  const NavItem({
+    required this.icon,
+    required this.activeIcon,
+    required this.page,
+  });
+}
 
 class Navbar extends StatelessWidget {
-  final int index;
-  final Function(int) onChange;
-  const Navbar({super.key, required this.index, required this.onChange});
+  final List<NavItem> items;
+  final int selectedIndex;
+  final ValueChanged<int> onItemSelected;
+  final Color indicatorColor;
+
+  const Navbar({
+    super.key,
+    required this.items,
+    required this.selectedIndex,
+    required this.onItemSelected,
+    this.indicatorColor = const Color(0xFFD21312),
+  });
 
   @override
   Widget build(BuildContext context) {
-    return BottomAppBar(
-      color: Colors.white,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          NavIconButton(
-              icon: IconsaxPlusLinear.home_1,
-              activeIcon: IconsaxPlusBold.home_1,
-              label: "Home",
-              isActive: index == 0,
-              onPressed: () {
-                onChange(0);
-              }),
-          NavIconButton(
-              icon: IconsaxPlusLinear.weight_1,
-              activeIcon: IconsaxPlusBold.weight_1,
-              label: "Fitness",
-              isActive: index == 1,
-              onPressed: () {
-                onChange(1);
-              }),
-          NavIconButton(
-              icon: IconsaxPlusLinear.record_circle,
-              activeIcon: IconsaxPlusBold.record_circle,
-              label: "Meals",
-              isActive: index == 2,
-              onPressed: () {
-                onChange(2);
-              }),
-          NavIconButton(
-              icon: IconsaxPlusLinear.element_plus,
-              activeIcon: IconsaxPlusBold.element_plus,
-              label: "Supplements",
-              isActive: index == 3,
-              onPressed: () {
-                onChange(3);
-              }),
-          NavIconButton(
-              icon: IconsaxPlusLinear.user,
-              activeIcon: IconsaxPlusBold.user,
-              label: "Profile",
-              isActive: index == 4,
-              onPressed: () {
-                onChange(4);
-              })
-        ],
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        boxShadow: [BoxShadow(color: Color(0xFFE1E1E1), blurRadius: 10)],
+      ),
+      child: SafeArea(
+        child: SizedBox(
+          height: 60,
+          child: Stack(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: List.generate(
+                  items.length,
+                  (index) => _buildNavItem(index),
+                ),
+              ),
+              _buildIndicator(context),
+            ],
+          ),
+        ),
       ),
     );
   }
-}
 
-class NavIconButton extends StatelessWidget {
-  final IconData icon;
-  final IconData activeIcon;
-  final String label;
-  final bool isActive;
-  final Function() onPressed;
-  const NavIconButton(
-      {super.key,
-      required this.icon,
-      required this.activeIcon,
-      required this.label,
-      required this.isActive,
-      required this.onPressed});
+  Widget _buildNavItem(int index) {
+    final item = items[index];
+    return GestureDetector(
+      onTap: () => onItemSelected(index),
+      child: SizedBox(
+        width: 60,
+        height: 60,
+        child: Center(
+          child: SvgPicture.asset(
+            selectedIndex == index ? item.activeIcon : item.icon,
+            width: 24,
+            height: 24,
+          ),
+        ),
+      ),
+    );
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    ColorScheme scheme = Theme.of(context).colorScheme;
-
-    return Material(
-      color: Colors.transparent,
-      child: GestureDetector(
-        onTap: onPressed,
-        child: Wrap(
-          crossAxisAlignment: WrapCrossAlignment.center,
-          direction: Axis.vertical,
-          children: [
-            Icon(isActive ? activeIcon : icon,
-                color: isActive ? scheme.primary : scheme.onSurface),
-            const SizedBox(
-              height: 5,
-            ),
-            Text(label,
-                style: TextStyle(
-                    color: isActive ? scheme.primary : scheme.onSurface))
-          ],
+  Widget _buildIndicator(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final itemWidth = width / items.length;
+    return AnimatedPositioned(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+      bottom: 0,
+      left: itemWidth * (selectedIndex + 0.5) - 20.5,
+      child: Container(
+        width: 41,
+        height: 6,
+        decoration: BoxDecoration(
+          color: indicatorColor,
+          borderRadius: const BorderRadius.vertical(top: Radius.circular(3)),
         ),
       ),
     );

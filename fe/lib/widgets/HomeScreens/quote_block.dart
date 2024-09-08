@@ -8,45 +8,60 @@ class QuoteBlock extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? quoteFont = GoogleFonts.bebasNeue().fontFamily;
+    String? textFooterFont = GoogleFonts.beVietnamPro().fontFamily;
 
     return Container(
-        height: 160,
-        decoration: BoxDecoration(
-          color: Colors.grey[100],
-        ),
-        clipBehavior: Clip.antiAlias,
-        child: Stack(
-          children: [
-            Positioned(
-              top: -10,
-              left: 10,
-              child: Text("“",
-                  style: TextStyle(
-                      fontSize: 80,
-                      fontFamily: quoteFont,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).colorScheme.primary)),
-            ),
-            Positioned.fill(
-              child: Padding(
-                padding: const EdgeInsets.all(30),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Text(quote,
-                            style: TextStyle(
-                                fontSize: 25,
-                                fontFamily: quoteFont,
-                                color:
-                                    Theme.of(context).colorScheme.onSurface)),
-                      ),
-                      const Text("Quote of the day",
-                          style: TextStyle(fontSize: 10, color: Colors.grey)),
-                    ]),
+      height: 150,
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Stack(
+        children: [
+          Positioned(
+            top: -15,
+            left: 7,
+            child: Text(
+              "“",
+              style: TextStyle(
+                fontSize: 96,
+                fontFamily: quoteFont,
+                fontWeight: FontWeight.w400,
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
-          ],
-        ));
+          ),
+          Positioned.fill(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(40, 30, 30, 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: Text(
+                      quote,
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontFamily: quoteFont,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                    ),
+                  ),
+                  Text(
+                    "Quote of the day",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey,
+                      fontFamily: textFooterFont,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

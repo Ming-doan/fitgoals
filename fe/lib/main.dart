@@ -15,10 +15,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          useMaterial3: true,
-          fontFamily: GoogleFonts.beVietnamPro().fontFamily,
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: Colors.redAccent, primary: Colors.redAccent)),
+        useMaterial3: true,
+        fontFamily: GoogleFonts.beVietnamPro().fontFamily,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFD21312),
+          primary: const Color(0xFFD21312),
+        ),
+      ),
       home: const SplashScreen(),
     );
   }
