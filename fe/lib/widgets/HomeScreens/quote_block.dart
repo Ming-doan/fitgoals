@@ -1,3 +1,5 @@
+import 'package:fitgoals/resources/app_colors.dart';
+import 'package:fitgoals/resources/app_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,8 +14,8 @@ class QuoteBlock extends StatelessWidget {
 
     return Container(
       height: 150,
-      decoration: BoxDecoration(
-        color: Colors.grey[200],
+      decoration: const BoxDecoration(
+        color: AppColors.lightGrey,
       ),
       clipBehavior: Clip.antiAlias,
       child: Stack(
@@ -22,7 +24,7 @@ class QuoteBlock extends StatelessWidget {
             top: -15,
             left: 7,
             child: Text(
-              "“",
+              AppTexts.quoteChar,
               style: TextStyle(
                 fontSize: 96,
                 fontFamily: quoteFont,
@@ -48,10 +50,10 @@ class QuoteBlock extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Quote of the day",
+                    AppTexts.quoteDailyText,
                     style: TextStyle(
                       fontSize: 12,
-                      color: Colors.grey,
+                      color: AppColors.grey,
                       fontFamily: textFooterFont,
                       fontWeight: FontWeight.w400,
                     ),

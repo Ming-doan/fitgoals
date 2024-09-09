@@ -1,6 +1,9 @@
-import 'package:fitgoals/utils/constants.dart';
+import 'package:fitgoals/resources/app_assets.dart';
+import 'package:fitgoals/resources/app_colors.dart';
+import 'package:fitgoals/resources/app_texts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // Model class
 class TodoItem {
@@ -32,6 +35,8 @@ class TodoItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final fontFamily = GoogleFonts.beVietnamPro().fontFamily;
+
     return Row(
       children: [
         // Checkbox
@@ -41,9 +46,9 @@ class TodoItemWidget extends StatelessWidget {
           child: Checkbox(
             value: item.isChecked,
             onChanged: onCheckboxChanged,
-            activeColor: const Color(0xFFD21312),
+            activeColor: AppColors.primary,
             side: const BorderSide(
-              color: Color(0xFFD21312),
+              color: AppColors.primary,
               width: 1,
             ),
             shape: RoundedRectangleBorder(
@@ -59,18 +64,18 @@ class TodoItemWidget extends StatelessWidget {
             children: [
               Text(
                 item.title,
-                style: const TextStyle(
-                  color: Colors.black,
-                  fontFamily: "Be Vietnam Pro",
+                style: TextStyle(
+                  color: AppColors.black,
+                  fontFamily: fontFamily,
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
                 ),
               ),
               Text(
                 item.subtitle,
-                style: const TextStyle(
-                  color: Color(0xFF797979),
-                  fontFamily: "Be Vietnam Pro",
+                style: TextStyle(
+                  color: AppColors.subtitle,
+                  fontFamily: fontFamily,
                   fontSize: 15,
                   fontWeight: FontWeight.w400,
                 ),
@@ -83,8 +88,8 @@ class TodoItemWidget extends StatelessWidget {
           children: [
             SvgPicture.asset(
               item.isIncreased
-                  ? IconConstants.arrowUp
-                  : IconConstants.arrowDown,
+                  ? AppAssets.icons.arrowUp
+                  : AppAssets.icons.arrowDown,
               width: 12,
               height: 12,
             ),
@@ -93,18 +98,18 @@ class TodoItemWidget extends StatelessWidget {
                 children: [
                   TextSpan(
                     text: '${item.calories}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Colors.black,
-                      fontFamily: "Be Vietnam Pro",
+                      fontFamily: fontFamily,
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-                  const TextSpan(
-                    text: 'cal',
+                  TextSpan(
+                    text: AppTexts.caloriesUnit,
                     style: TextStyle(
-                      color: Color(0xFF797979),
-                      fontFamily: "Be Vietnam Pro",
+                      color: AppColors.subtitle,
+                      fontFamily: fontFamily,
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                     ),
@@ -134,8 +139,7 @@ class _TodoListState extends State<TodoList> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.grey[200], // --Ceramic color
-        // color: const Color(0xFFF9F9F9), // --Ceramic color
+        color: AppColors.lightGrey,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(

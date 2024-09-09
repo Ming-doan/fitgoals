@@ -1,3 +1,6 @@
+import 'package:fitgoals/resources/app_assets.dart';
+import 'package:fitgoals/resources/app_colors.dart';
+import 'package:fitgoals/resources/app_texts.dart';
 import 'package:fitgoals/screens/HomeScreens/layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,10 +34,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: AppColors.splashBackground,
       body: Center(
-        child: SvgPicture.asset("assets/General/Logo.svg",
-            semanticsLabel: "Fitgoals"),
+        child: SvgPicture.asset(AppAssets.images.logo,
+            semanticsLabel: AppTexts.appName),
       ),
     );
   }

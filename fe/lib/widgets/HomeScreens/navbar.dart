@@ -1,3 +1,4 @@
+import 'package:fitgoals/resources/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -17,21 +18,19 @@ class Navbar extends StatelessWidget {
   final List<NavItem> items;
   final int selectedIndex;
   final ValueChanged<int> onItemSelected;
-  final Color indicatorColor;
 
   const Navbar({
     super.key,
     required this.items,
     required this.selectedIndex,
     required this.onItemSelected,
-    this.indicatorColor = const Color(0xFFD21312),
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
         boxShadow: [BoxShadow(color: Color(0xFFE1E1E1), blurRadius: 10)],
       ),
@@ -84,9 +83,9 @@ class Navbar extends StatelessWidget {
       child: Container(
         width: 41,
         height: 6,
-        decoration: BoxDecoration(
-          color: indicatorColor,
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(3)),
+        decoration: const BoxDecoration(
+          color: AppColors.primary,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(3)),
         ),
       ),
     );

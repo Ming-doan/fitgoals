@@ -1,8 +1,10 @@
+import 'package:fitgoals/resources/app_colors.dart';
+import 'package:fitgoals/screens/HomeScreens/fitness_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fitgoals/widgets/HomeScreens/navbar.dart';
 import 'package:fitgoals/screens/HomeScreens/main_screen.dart';
-import 'package:fitgoals/utils/constants.dart';
+import 'package:fitgoals/resources/app_assets.dart';
 
 class HomeScreensLayout extends StatefulWidget {
   const HomeScreensLayout({super.key});
@@ -14,31 +16,31 @@ class HomeScreensLayout extends StatefulWidget {
 class _HomeScreensLayoutState extends State<HomeScreensLayout> {
   int _selectedIndex = 0;
 
-  static const List<NavItem> _navItems = [
+  final List<NavItem> _navItems = [
     NavItem(
-      icon: IconConstants.home,
-      activeIcon: IconConstants.homeActive,
-      page: MainScreen(),
+      icon: AppAssets.icons.home,
+      activeIcon: AppAssets.icons.homeActive,
+      page: const MainScreen(),
     ),
     NavItem(
-      icon: IconConstants.fitness,
-      activeIcon: IconConstants.fitnessActive,
-      page: Center(child: Text('Fitness')),
+      icon: AppAssets.icons.fitness,
+      activeIcon: AppAssets.icons.fitnessActive,
+      page: const FitnessScreen(),
     ),
     NavItem(
-      icon: IconConstants.meal,
-      activeIcon: IconConstants.mealActive,
-      page: Center(child: Text('Meals')),
+      icon: AppAssets.icons.meal,
+      activeIcon: AppAssets.icons.mealActive,
+      page: const Center(child: Text('Meals')),
     ),
     NavItem(
-      icon: IconConstants.supplement,
-      activeIcon: IconConstants.supplementActive,
-      page: Center(child: Text('Supplements')),
+      icon: AppAssets.icons.supplement,
+      activeIcon: AppAssets.icons.supplementActive,
+      page: const Center(child: Text('Supplements')),
     ),
     NavItem(
-      icon: IconConstants.user,
-      activeIcon: IconConstants.userActive,
-      page: Center(child: Text('Profile')),
+      icon: AppAssets.icons.user,
+      activeIcon: AppAssets.icons.userActive,
+      page: const Center(child: Text('Profile')),
     ),
   ];
 
@@ -52,7 +54,8 @@ class _HomeScreensLayoutState extends State<HomeScreensLayout> {
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: const SystemUiOverlayStyle(systemNavigationBarColor: Colors.white),
+      value: const SystemUiOverlayStyle(
+          systemNavigationBarColor: AppColors.background),
       child: Scaffold(
         body: IndexedStack(
           index: _selectedIndex,

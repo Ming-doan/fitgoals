@@ -1,4 +1,4 @@
-import 'package:fitgoals/utils/constants.dart';
+import 'package:fitgoals/resources/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -17,7 +17,7 @@ class HeaderBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SvgPicture.asset(
-              LogoConstants.horizontal,
+              AppAssets.images.logo,
               height: 32, // Adjust this value to fit your logo
               fit: BoxFit.contain,
             ),
