@@ -1,4 +1,5 @@
 import 'package:fitgoals/screens/HomeScreens/layout.dart';
+import 'package:fitgoals/screens/IntroScreen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -18,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomeScreensLayout()));
+          MaterialPageRoute(builder: (context) => const WelcomePage()));
     });
   }
 
