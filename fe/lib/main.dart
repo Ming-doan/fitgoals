@@ -1,4 +1,4 @@
-import 'package:fitgoals/screens/Shared/splash_screen.dart';
+import 'package:fitgoals/features/splash/presentation/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
