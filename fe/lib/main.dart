@@ -1,4 +1,4 @@
-import 'package:fitgoals/screens/Shared/splash_screen.dart';
+import 'package:fitgoals/features/splash/presentation/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,10 +15,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          useMaterial3: true,
-          fontFamily: GoogleFonts.beVietnamPro().fontFamily,
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: Colors.redAccent, primary: Colors.redAccent)),
+        useMaterial3: true,
+        fontFamily: GoogleFonts.beVietnamPro().fontFamily,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFD21312),
+          primary: const Color(0xFFD21312),
+        ),
+      ),
       home: const SplashScreen(),
     );
   }
